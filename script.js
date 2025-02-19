@@ -1,5 +1,5 @@
 let menuToggle = document.querySelector('.icon-button');
-const menuOverlay = document.querySelector('.menu-overlay');
+const menuOverlay = document.querySelector('nav');
 
 function toggleIcon() {
     menuToggle.classList.toggle('active');
@@ -32,8 +32,9 @@ async function shortenUrl(longUrl) {
             throw new Error("Failed to shorten URL");
         }
 
-        const data = await response.json();
+        const data = response.json();
         shortResult = data.link;
+        console.log(data);
     } 
     catch (error) {
         console.error(error);
@@ -46,12 +47,14 @@ const errorMessage = document.querySelector('.link-container p');
 const linkResults = document.querySelector('.link-results');
 
 function result() {
+    let inputURL = input.value.trim();
+
     const linkContainer = document.createElement('div');
-    linkContainer.className = 'link-container';
+    linkContainer.className = 'link-result';
     linkResults.appendChild(linkContainer);
 
     const longURL = document.createElement('p');
-    longURL.textContent = inputUrl;
+    longURL.textContent = inputURL;
     longURL.className = 'long-url';
     linkContainer.append(longURL);
 
@@ -59,7 +62,7 @@ function result() {
     linkContainer.appendChild(horizontalRule);
 
     const shortLink = document.createElement('div');
-    linkResults.appendChild(shortLink);
+    linkContainer.appendChild(shortLink);
 
     const shortURL = document.createElement('p');
     shortURL.textContent = shortResult;
@@ -71,6 +74,7 @@ function result() {
     shortLink.appendChild(button);
 
     const btn = document.createElement('button');
+    btn.textContent = 'Copy';
     button.appendChild(btn);
 }
 

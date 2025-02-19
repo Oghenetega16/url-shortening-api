@@ -37,6 +37,7 @@ h1, h2, h3 {
     font-weight: 700;
 }
 
+
 /* intro section */
 .intro-section {
     margin: 2rem 1.5rem;
@@ -71,12 +72,11 @@ h1, h2, h3 {
 }
 
 .illustration {
-    width: 100%;
     margin-top: 1.5rem;
 }
 
 .illustration img {
-    width: 500px;
+    width: 150%;
 }
 
 h1 {
@@ -85,21 +85,17 @@ h1 {
     line-height: 2.8rem;
 }
 
-button {
+.intro-section .start {
     width: 200px;
     padding: 1rem 0;
     font-family: inherit;
     font-weight: 700;
     font-size: inherit;
     color: white;
-    margin: 2rem 0 4rem 0;
+    margin: .5rem 0 4rem 0;
     background-color: var(--cyan);
     border: none;
     border-radius: 50px;
-}
-
-.intro-section button {
-    margin: .5rem 0 4rem 0;
 }
 
 /* first section */
@@ -123,7 +119,7 @@ button {
     background-color: var(--dark-violet);
     border-radius: 0.7rem;
     padding: 1.5rem;
-    margin: 4rem 0 0 0;
+    margin: 1rem 0 0 0;
     position: relative;
     bottom: 5rem;
 }
@@ -151,6 +147,7 @@ button {
     padding: 1.2rem 1rem;
     border: none;
     border-radius: .4rem;
+    font-family: inherit;
 }
 
 .link-container input.error {
@@ -175,6 +172,13 @@ button {
 .link-container button {
     border-radius: .4rem;
     margin-top: 1rem;
+    color: white;
+    background-color: var(--cyan);
+    border: none;
+    border-radius: .3rem;
+    font-weight: 700;
+    font-size: 17px;
+    font-family: inherit;
 }
 
 .link-result {
@@ -182,6 +186,8 @@ button {
     border-radius: .3rem;
     text-align: left;
     padding-bottom: 1rem;
+    margin-bottom: 3rem;
+    margin-top: -2rem;
 }
 
 .link-result p {
@@ -210,10 +216,16 @@ button {
     border-radius: .3rem;
     padding: .4rem 0;
     margin: 0 .8rem;
+    font-weight: 700;
+    font-size: 17px;
+    font-family: inherit;
+    color: white;
+    border: none;
+    background-color: var(--cyan);
 }
 
 .main-section h2 {
-    margin-top: 1rem;
+    margin-top: 4rem;
 }
 
 .box {
@@ -270,6 +282,15 @@ button {
 
 .submain-section button {
     margin: 0;
+    width: 200px;
+    padding: 1rem 0;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: inherit;
+    color: white;
+    background-color: var(--cyan);
+    border: none;
+    border-radius: 50px;
 }
 
 /* footer section */
@@ -317,45 +338,53 @@ footer .footer-logo svg {
 }
 
 /* overlay */
-.menu-overlay {
+nav {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     position: absolute;
     top: 0;
-    text-align: center;
     width: 87%;
-    height: 74.8%;
+    height: 381px;
     background-color: var(--dark-violet);
-    padding: 1rem 1.5rem;
-    margin: 5.5rem 1.5rem 0 1.5rem;
-    font-size: 22px;
+    padding: 2rem 1.5rem;
+    margin-top: 3.5rem ;
+    font-size: 18px;
     border-radius: .7rem;
     display: none;
 }
 
-.menu-overlay.active {
+nav.active {
     display: block;
 }
 
-.menu-overlay ul {
+nav ul {
     list-style: none;
 }
 
-.menu-overlay ul li {
+nav ul li {
     color: white;
-    font-weight: 700;
+    font-weight: 500;
 }
 
-.menu-overlay .resources {
-    border-bottom: 1px solid var(--grayish-violet);
-    padding: 0 0 1.5rem 0;
+nav hr {
+    opacity: .3;
 }
 
-.menu-overlay .sign-up {
+nav .sign-up {
     width: 100%;
     background-color: var(--cyan);
     padding: .6rem 0;
     border-radius: 50px;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    
 }
 
