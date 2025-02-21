@@ -32,9 +32,8 @@ async function shortenUrl(longUrl) {
             throw new Error("Failed to shorten URL");
         }
 
-        const data = response.json();
+        const data = await response.json();
         shortResult = data.link;
-        console.log(data);
     } 
     catch (error) {
         console.error(error);
@@ -66,7 +65,7 @@ function result() {
 
     const shortURL = document.createElement('p');
     shortURL.textContent = shortResult;
-    shortURL.className = 'short-url';
+    shortURL.className ='short-url';
     shortLink.appendChild(shortURL);
 
     const button = document.createElement('div');
@@ -81,14 +80,17 @@ function result() {
 form.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    let inputUrl = input.value.trim();
-    if (inputUrl === '') {
+    let inputValue = input.value.trim();
+    let inputUrl = ensureHttps(inputValue);
+    
+    if (inputValue === '') {
         input.classList.add('error');
         errorMessage.classList.add('error');
         return;
     }
     else {
-        console.log(inputUrl);
+        input.classList.remove('error');
+        errorMessage.classList.remove('error');
         shortenUrl(inputUrl);
         result();
     }
@@ -96,6 +98,16 @@ form.addEventListener('submit', (event) => {
     form.reset();
 });
 
+function ensureHttps(url) {
+    if(!url.startsWith('https://')) {
+        url = 'https://' + url;
+    }
+    return url;
+}
 
-
+// copyButton = document.querySelector('button');
+// copyButton.addEventListener('click', () => {
+//     navigator.clipboard.writeText(shortResult);
+//     copyButton.textContent = 'Copied!';
+// });
 
