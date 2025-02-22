@@ -77,6 +77,7 @@ h1, h2, h3 {
 
 .illustration img {
     width: 150%;
+    overflow: hidden;
 }
 
 h1 {
@@ -452,8 +453,9 @@ nav .sign-up {
         flex-direction: row-reverse;
         align-items: center;
         text-align: left;
-        margin: 2.5rem 4rem;
+        margin: 2.5rem 0 2.5rem 4rem;
     }
+
 
     h1 {
         margin: 2rem 0 0 0;
@@ -622,11 +624,8 @@ nav .sign-up {
 
     .socials {
         display: flex;
-        gap: 1rem;
         margin: 0;
-    }
-
-    .socials svg {
-        width: 24px;
+        color: white;
+        height: fit-content;
     }
 }
