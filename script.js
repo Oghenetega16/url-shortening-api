@@ -111,3 +111,9 @@ function ensureHttps(url) {
 //     copyButton.textContent = 'Copied!';
 // });
 
+
+
+// What's left to de done:
+// 1. Use a different API to shorten the url - a free one.
+// 2. The container for the generated short url shouldn't be created in the javascript but in the html file.
+// 3. Do a general check.
