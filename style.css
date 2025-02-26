@@ -274,12 +274,22 @@ h1 {
     margin-top: 1rem;
 }
 
-.stroke {
+.first-stroke {
     width: 7px;
-    height: 55px;
+    height: 60px;
     background-color: var(--cyan);
     position: absolute; 
-    top: -55px;
+    top: 49.7%;
+    left: 49.5%;
+}
+
+.second-stroke {
+    width: 7px;
+    height: 60px;
+    background-color: var(--cyan);
+    position: absolute;
+    top: 75.7%;
+    left: 49.5%;
 }
 
 /* submain section */
@@ -683,8 +693,8 @@ nav .sign-up {
     }
 
     .illustration img {
-        width: 120%;
-        margin-left: 5rem;
+        width: 115%;
+        margin-left: 2rem;
     }
 
     .box {
@@ -746,7 +756,7 @@ nav .sign-up {
     }
 
     .header {
-        margin: 1.5rem 4rem 1.5rem 10rem;
+        margin: 1.5rem 10rem 1.5rem 10rem;
     }
 
     .header .logo_nav {
@@ -773,11 +783,13 @@ nav .sign-up {
     }
 
     .illustration img {
-        width: 130%;
+        width: 120%;
+        margin-left: 4px;
     }
 
     .link-container {
-        margin-left: 9rem;
+        margin-left: 8.5rem;
+        margin-right: 8.5rem;
         gap: 2rem;
         padding: 3.5rem;
         bottom: 5rem;
@@ -807,6 +819,8 @@ nav .sign-up {
 
     .boxes {
         margin-left: 9rem;
+        margin-right: 9rem;
+        margin-bottom: 10rem;
     }
 
     .box {
@@ -824,10 +838,50 @@ nav .sign-up {
     .box-image {
         left: 75px;
     }
-}
 
-/* What's left to be done:
-1. The 1440px stylings. 
-2. Check the mobile design for responsiveness. */
+    .first-stroke {
+        top: 82%;
+        left: 35.7%;
+    }
+
+    .second-stroke {
+        top: 82%;
+        left: 62.7%;
+    }
+
+    .second {
+        top: 1rem;
+    }
+
+    .third {
+        top: 5rem;
+    }
+
+    .submain-section {
+        padding: 2rem;
+    }
+
+    .submain-section h2 {
+        font-size: 40px;
+    }
+
+    .submain-section button {
+        padding: 1rem 2.5rem;
+        font-size: 15px;
+    }
+
+    footer {
+        padding-left: 10rem;
+        padding-right: 10rem;
+    }
+
+    .footer-list h4 {
+        font-size: 16px;
+    }
+
+    .footer-list ul li {
+        font-size: 15px;
+    }
+}
 
 
