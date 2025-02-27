@@ -10,10 +10,10 @@ menuToggle.addEventListener('click', () => {
     toggleIcon();
 });
 
-let shortResult;
+let shortUrl;
 async function shortenUrl(longUrl) {
-    const accessToken = "48f32e11f28ac7b1d5f486eed652f3554cdf6485";
     const apiUrl = "https://api-ssl.bitly.com/v4/shorten";
+    const accessToken = "e3b544aa3aaa0d6d47cb0dfa17aae00978067689";
 
     try {
         const response = await fetch (apiUrl, {
@@ -23,8 +23,7 @@ async function shortenUrl(longUrl) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ 
-                long_url: longUrl,
-                domain: 'bit.ly'
+                long_url: longUrl
             })
         });
 
@@ -33,55 +32,34 @@ async function shortenUrl(longUrl) {
         }
 
         const data = await response.json();
-        shortResult = data.link;
+        shortUrl = data.link;
     } 
     catch (error) {
         console.error(error);
     }
 }
 
+
 const input = document.querySelector('.url');
 const form = document.querySelector('form');
 const errorMessage = document.querySelector('.link-container p');
-const linkResults = document.querySelector('.link-results');
+const result = document.querySelector('.link-result');
+const linkContainer = document.querySelector('.link-results');
 
-function result() {
-    let inputURL = input.value.trim();
+const longLink = document.querySelector('.long-url');
+const shortLink = document.querySelector('.short-url');
 
-    const linkContainer = document.createElement('div');
-    linkContainer.className = 'link-result';
-    linkResults.appendChild(linkContainer);
-
-    const longURL = document.createElement('p');
-    longURL.textContent = inputURL;
-    longURL.className = 'long-url';
-    linkContainer.append(longURL);
-
-    const horizontalRule = document.createElement('hr');
-    linkContainer.appendChild(horizontalRule);
-
-    const shortLink = document.createElement('div');
-    linkContainer.appendChild(shortLink);
-
-    const shortURL = document.createElement('p');
-    shortURL.textContent = shortResult;
-    shortURL.className ='short-url';
-    shortLink.appendChild(shortURL);
-
-    const button = document.createElement('div');
-    button.className = 'button';
-    shortLink.appendChild(button);
-
-    const btn = document.createElement('button');
-    btn.textContent = 'Copy';
-    button.appendChild(btn);
+function displayLinkResult() {
+    result.classList.add('active');
+    longLink.textContent = longUrl;
+    shortLink.textContent = shortUrl;
 }
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
 
     let inputValue = input.value.trim();
-    let inputUrl = ensureHttps(inputValue);
+    let longUrl = ensureHttps(inputValue);
     
     if (inputValue === '') {
         input.classList.add('error');
@@ -91,8 +69,7 @@ form.addEventListener('submit', (event) => {
     else {
         input.classList.remove('error');
         errorMessage.classList.remove('error');
-        shortenUrl(inputUrl);
-        result();
+        shortenUrl(longUrl);
     }
 
     form.reset();
@@ -110,7 +87,6 @@ function ensureHttps(url) {
 //     navigator.clipboard.writeText(shortResult);
 //     copyButton.textContent = 'Copied!';
 // });
-
 
 
 // What's left to de done:

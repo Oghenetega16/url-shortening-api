@@ -47,7 +47,7 @@ h1, h2, h3 {
     margin: 2rem 0;
 }
 
-hr {
+.header hr {
     display: none;
 }
 
@@ -200,6 +200,11 @@ h1 {
     padding-bottom: 1rem;
     margin-bottom: 3rem;
     margin-top: -2rem;
+    display: none;
+}
+
+.link-result.active {
+    display: block;
 }
 
 .link-result p {
