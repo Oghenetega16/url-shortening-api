@@ -11,7 +11,7 @@ menuToggle.addEventListener('click', () => {
 });
 
 let shortUrl;
-async function shortenUrl(longUrl) {
+async function shortenUrl(url) {
     const apiUrl = "https://api-ssl.bitly.com/v4/shorten";
     const accessToken = "e3b544aa3aaa0d6d47cb0dfa17aae00978067689";
 
@@ -23,7 +23,7 @@ async function shortenUrl(longUrl) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ 
-                long_url: longUrl
+                long_url: url
             })
         });
 
@@ -48,18 +48,23 @@ const linkContainer = document.querySelector('.link-results');
 
 const longLink = document.querySelector('.long-url');
 const shortLink = document.querySelector('.short-url');
+let longUrl;
+let short;
+
 
 function displayLinkResult() {
-    result.classList.add('active');
     longLink.textContent = longUrl;
-    shortLink.textContent = shortUrl;
+    shortLink.textContent = short;
+    const cloned = result.cloneNode(true);
+    cloned.classList.add('active');
+    linkContainer.appendChild(cloned);
 }
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
 
     let inputValue = input.value.trim();
-    let longUrl = ensureHttps(inputValue);
+    longUrl = ensureHttps(inputValue);
     
     if (inputValue === '') {
         input.classList.add('error');
@@ -69,7 +74,8 @@ form.addEventListener('submit', (event) => {
     else {
         input.classList.remove('error');
         errorMessage.classList.remove('error');
-        shortenUrl(longUrl);
+        short = shortenUrl(longUrl);
+        displayLinkResult();
     }
 
     form.reset();
@@ -82,11 +88,12 @@ function ensureHttps(url) {
     return url;
 }
 
-// copyButton = document.querySelector('button');
-// copyButton.addEventListener('click', () => {
-//     navigator.clipboard.writeText(shortResult);
-//     copyButton.textContent = 'Copied!';
-// });
+copyButton = document.querySelector('.link-result button');
+copyButton.addEventListener('click', () => {
+    console.log('copy button clicked');
+    navigator.clipboard.writeText(short);
+    copyButton.textContent = 'Copied!';
+});
 
 
 // What's left to de done:

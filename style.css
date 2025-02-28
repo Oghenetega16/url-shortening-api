@@ -204,7 +204,8 @@ h1 {
 }
 
 .link-result.active {
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 
 .link-result p {
@@ -533,6 +534,11 @@ nav .sign-up {
         background-position: -150px;
     }
 
+    .link-container .error-msg {
+        position: absolute;
+        top: 85px;
+    }
+
     .link-container input {
         width: 100%;
         height: 45px;
@@ -547,6 +553,41 @@ nav .sign-up {
         font-size: 13px;
         width: 30%;
         height: 45px;
+    }
+
+    .link-result {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: .4rem .2rem;
+        margin-left: 2.5rem;
+        margin-right: 2.5rem;
+        display: none;
+    }
+
+    .link-result.active {
+        flex-direction: row;
+    }
+
+    .link-result hr {
+        display: none;
+    }
+
+    .link-result .button {
+        width: fit-content;
+        height: fit-content;
+        padding: .3rem;
+    }
+
+    .link-result .button button {
+        padding: .4rem 1.5rem;
+        font-size: 14px;
+    }
+    
+    .link-result .short-url_btn {
+        display: flex;
+        align-items: center;
     }
 
     .main-section-text {
@@ -807,6 +848,11 @@ nav .sign-up {
 
     .link-container input::placeholder {
         font-size: 18px;
+    }
+
+    .link-result {
+        margin-right: 8.5rem;
+        margin-left: 8.5rem;
     }
 
     .main-section-text {
