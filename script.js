@@ -13,7 +13,7 @@ menuToggle.addEventListener('click', () => {
 let shortUrl;
 async function shortenUrl(url) {
     const apiUrl = "https://api-ssl.bitly.com/v4/shorten";
-    const accessToken = "e3b544aa3aaa0d6d47cb0dfa17aae00978067689";
+    const accessToken = "48f32e11f28ac7b1d5f486eed652f3554cdf6485";
 
     try {
         const response = await fetch (apiUrl, {
@@ -32,13 +32,13 @@ async function shortenUrl(url) {
         }
 
         const data = await response.json();
-        shortUrl = data.link;
+        return data.link;
     } 
     catch (error) {
         console.error(error);
+        return null;
     }
 }
-
 
 const input = document.querySelector('.url');
 const form = document.querySelector('form');
@@ -51,7 +51,6 @@ const shortLink = document.querySelector('.short-url');
 let longUrl;
 let short;
 
-
 function displayLinkResult() {
     longLink.textContent = longUrl;
     shortLink.textContent = short;
@@ -60,7 +59,7 @@ function displayLinkResult() {
     linkContainer.appendChild(cloned);
 }
 
-form.addEventListener('submit', (event) => {
+form.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     let inputValue = input.value.trim();
@@ -74,29 +73,37 @@ form.addEventListener('submit', (event) => {
     else {
         input.classList.remove('error');
         errorMessage.classList.remove('error');
-        short = shortenUrl(longUrl);
-        displayLinkResult();
+        short = await shortenUrl(longUrl);
+
+        if (short) {
+            displayLinkResult();
+        }
+        else {
+            console.error('Failed to shorten the URL');
+        }
     }
 
     form.reset();
 });
 
 function ensureHttps(url) {
-    if(!url.startsWith('https://')) {
-        url = 'https://' + url;
-    }
-    return url;
+    return url.startsWith('https://') ? url : `https://${url}`;
 }
 
+const shortResult = document.querySelector('.link-result .short-url')
 copyButton = document.querySelector('.link-result button');
 copyButton.addEventListener('click', () => {
-    console.log('copy button clicked');
-    navigator.clipboard.writeText(short);
-    copyButton.textContent = 'Copied!';
+    navigator.clipboard.writeText(shortResult)
+        .then(() => {
+            copyButton.textContent = 'Copied!';
+            setTimeout(() => {
+                copyButton.textContent = 'Copy';
+            }, 2000); // Reset text after 2 seconds
+        })
+        .catch(err => console.error('Failed to copy: ', err));
 });
 
 
 // What's left to de done:
-// 1. Use a different API to shorten the url - a free one.
-// 2. The container for the generated short url shouldn't be created in the javascript but in the html file.
-// 3. Do a general check.
+// 1. The short url isn't showing in the link result.
+// 2. The copy button isn't working.
