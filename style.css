@@ -32,6 +32,10 @@ p, li {
     margin: 1.5rem 0;
 }
 
+a, button {
+    cursor: pointer;
+}
+
 h1, h2, h3 {
     color: var(--very-dark-violet);
     font-weight: 700;
@@ -41,14 +45,9 @@ h1, h2, h3 {
     display: none;
 }
 
-
 /* intro section */
 .intro-section {
     margin: 2rem 0;
-}
-
-.header hr {
-    display: none;
 }
 
 .header {
@@ -97,6 +96,10 @@ h1 {
     line-height: 2.8rem;
 }
 
+.intro-text p {
+    margin: 0 1.5rem;
+}
+
 .intro-section .start {
     width: 200px;
     padding: 1rem 0;
@@ -104,10 +107,16 @@ h1 {
     font-weight: 700;
     font-size: inherit;
     color: white;
-    margin: .5rem 0 4rem 0;
+    margin: 1.5rem 0 3rem 0;
     background-color: var(--cyan);
     border: none;
     border-radius: 50px;
+    cursor: pointer;
+}
+
+.intro-section .start:hover {
+    transform: scale(1.1);
+    opacity: .4;
 }
 
 /* first section */
@@ -134,6 +143,8 @@ h1 {
     margin: 1rem 0 0 0;
     position: relative;
     bottom: 5rem;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .link-container .error-msg {
@@ -247,7 +258,11 @@ h1 {
 }
 
 .main-section h2 {
-    margin-top: 4rem;
+    margin-top: -1rem;
+}
+
+.boxes {
+    position: relative;
 }
 
 .box {
@@ -281,21 +296,21 @@ h1 {
 }
 
 .first-stroke {
-    width: 7px;
+    width: 10px;
     height: 60px;
     background-color: var(--cyan);
     position: absolute; 
-    top: 49.7%;
-    left: 49.5%;
+    top: 264px;
+    left: 49%;
 }
 
 .second-stroke {
-    width: 7px;
+    width: 10px;
     height: 60px;
     background-color: var(--cyan);
     position: absolute;
-    top: 75.7%;
-    left: 49.5%;
+    top: 647px;
+    left: 49%;
 }
 
 /* submain section */
@@ -323,6 +338,11 @@ h1 {
     background-color: var(--cyan);
     border: none;
     border-radius: 50px;
+}
+
+.submain-section button:hover {
+    transform: scale(1.1);
+    opacity: .4;
 }
 
 /* footer section */
@@ -361,6 +381,11 @@ footer .footer-logo svg {
     font-size: 16px;
 }
 
+.footer-items ul li:hover {
+    color: var(--cyan);
+    transform: scale(1.1);
+}
+
 .socials {
     display: flex;
     gap: 1.3rem;
@@ -369,43 +394,75 @@ footer .footer-logo svg {
     justify-content: center;
 }
 
+.socials i:hover {
+    color: var(--cyan);
+    transform: scale(1.1);
+}
+
 
 /* overlay */
 nav {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
     position: absolute;
     top: 0;
     width: 87%;
     height: 381px;
     background-color: var(--dark-violet);
-    padding: 2rem 1.5rem;
+    padding-top: 2.5rem;
     margin-top: 3.5rem ;
     font-size: 18px;
     border-radius: .7rem;
     display: none;
 }
 
+nav .menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1.7rem;
+}
+
 nav.active {
     display: block;
 }
 
-nav ul {
-    list-style: none;
-}
-
-nav ul li {
+nav a{
     color: white;
-    font-weight: 500;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-nav hr {
+nav a:hover {
+    transform: scale(1.1);
+}
+
+.nav-btn hr {
     opacity: .3;
+    margin-top: -1.5rem;
 }
 
-nav .sign-up {
-    width: 100%;
+.nav-btn.active {
+    display: flex;
+    flex-direction: column;
+    gap: 1.7rem;
+    width: 87%;
+    padding: .8rem 1.5rem;
+    position: absolute;
+    top: 8.8%;
+    left: 5%;
+    margin-top: -1.5rem;
+}
+
+.nav-btn a {
+    list-style: none;
+    color: white;
+    font-weight: 700;
+}
+
+.nav-btn a:hover {
+    transform: scale(1.1);
+}
+
+.nav-btn .sign-up {
     background-color: var(--cyan);
     padding: .6rem 0;
     border-radius: 50px;
@@ -413,8 +470,26 @@ nav .sign-up {
     font-family: inherit;
     font-size: inherit;
     color: white;
-    font-weight: 500;
+    font-weight: 700;
     cursor: pointer;
+}
+
+.nav-btn .sign-up:hover {
+    transform: scale(1.1);
+    opacity: .4;
+}
+
+@media (min-width: 425px) {
+    .second-stroke {
+        top: 623px;
+    }
+
+    .submain-section {
+        background-image: url('./images/bg-boost-desktop.svg');
+        background-position: center;
+        background-size: cover;
+        padding: 5rem 0;
+    }
 }
 
 @media (min-width: 768px) {
@@ -432,15 +507,20 @@ nav .sign-up {
         height: fit-content;
     }
 
-    nav ul li {
+    nav a {
         color: var(--gray);
+        font-weight: 500;
+    }
+
+    nav a:hover {
+        color: var(--very-dark-violet);
     }
 
     hr {
         display: none;
     }
 
-    nav .menu ul {
+    nav .menu {
         display: flex;
         flex-direction: row;
         gap: 1.5rem;
@@ -450,8 +530,8 @@ nav .sign-up {
         font-size: 12px;
     }
 
-    .buttons li {
-        list-style: none;
+    .buttons a {
+        text-decoration: none;
         font-weight: 500;
     }
 
@@ -462,7 +542,16 @@ nav .sign-up {
         gap: 1.5rem;
     }
 
-    .sign-up {
+    .nav-btn a {
+        color: var(--gray);
+        font-weight: 500;
+    }
+
+    .nav-btn a:hover {
+        color: var(--very-dark-violet);
+    }
+
+    .nav-btn .sign-up {
         width: fit-content;
         height: fit-content;
         background-color: var(--cyan);
@@ -510,6 +599,11 @@ nav .sign-up {
         margin: .2rem 0 1rem 0;
         font-size: 15px;
         color: var(--gray);
+    }
+
+    .intro-text p {
+        margin-left: 0;
+        width: 360px;
     }
 
     .intro-section .start {
@@ -653,8 +747,8 @@ nav .sign-up {
         height: 5px;
         background-color: var(--cyan);
         position: absolute; 
-        top: 83%;
-        left: 33.5%;
+        top: 150px;
+        left: 194px;
     }
 
     .second-stroke {
@@ -662,8 +756,8 @@ nav .sign-up {
         height: 5px;
         background-color: var(--cyan);
         position: absolute; 
-        top: 83%;
-        left: 63.5%;
+        top: 150px;
+        left: 410px;
     }
 
     .submain-section {
@@ -724,10 +818,18 @@ nav .sign-up {
 }
 
 @media (min-width: 1024px) {
+    .header {
+        margin: 1.5rem 7rem;
+    }
+
     h1 {
         margin: 2rem 0 0 0;
         font-size: 50px;
         line-height: 3.5rem;
+    }
+
+    .intro-content {
+        margin-left: 7rem;
     }
 
     .intro-text p {
@@ -770,17 +872,34 @@ nav .sign-up {
         top: 4rem;
     }
 
+    .first-stroke {
+        top: 180px;
+        left: 252px;
+    }
+
     .second-stroke {
-        left: 64.3%;
+        top: 180px;
+        left: 526px;
     }
 
     .link-container {
         background-size: cover;
         background-position: center center;
+        margin: 1.5rem 5.5rem;
+    }
+
+    .boxes {
+        margin-left: 5.5rem;
+        margin-right: 5.5rem;
     }
 
     .submain-section {
         background-position: center center;
+    }
+
+    footer {
+        padding-left: 7rem;
+        padding-right: 7rem;
     }
 
     .footer-lists {
@@ -793,7 +912,7 @@ nav .sign-up {
 }
 
 @media (min-width: 1440px) {
-    nav ul li, .buttons {
+    nav a, .buttons {
         font-size: 15px;
     }
 
@@ -839,6 +958,10 @@ nav .sign-up {
         gap: 2rem;
         padding: 3.5rem;
         bottom: 5rem;
+    }
+
+    .link-container .error-msg {
+        top: 125px;
     }
 
     .link-container input, .link-container button {
@@ -891,13 +1014,13 @@ nav .sign-up {
     }
 
     .first-stroke {
-        top: 82%;
-        left: 35.7%;
+        top: 195px;
+        left: 353px;
     }
 
     .second-stroke {
-        top: 82%;
-        left: 62.7%;
+        top: 195px;
+        left: 729px;
     }
 
     .second {
