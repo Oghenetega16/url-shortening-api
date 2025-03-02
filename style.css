@@ -376,6 +376,7 @@ footer .footer-logo svg {
 .footer-items ul li:hover {
     color: var(--cyan);
     transform: scale(1.1);
+    cursor: pointer;
 }
 
 .socials {
@@ -389,6 +390,7 @@ footer .footer-logo svg {
 .socials i:hover {
     color: var(--cyan);
     transform: scale(1.5);
+    cursor: pointer;
 }
 
 
@@ -469,19 +471,6 @@ nav a:hover {
 .nav-btn .sign-up:hover {
     transform: scale(1.1);
     opacity: .4;
-}
-
-@media (min-width: 425px) {
-    .second-stroke {
-        top: 623px;
-    }
-
-    .submain-section {
-        background-image: url('./images/bg-boost-desktop.svg');
-        background-position: center;
-        background-size: cover;
-        padding: 5rem 0;
-    }
 }
 
 @media (min-width: 768px) {
